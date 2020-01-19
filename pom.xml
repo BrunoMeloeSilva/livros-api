@@ -38,6 +38,23 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		<!-- Dependencias inseridas apos a criacao do pejeto -->
+		<!-- Utilitário sem o qual o h2database não funciona, dentre outras coisas.. -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+		</dependency>
+		<!-- Banco de dados em memoria, para testes e estudos -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<!-- JPA para geração/interação com banco de dados, necessario para o funcionamento do h2database -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
 		
 	</dependencies>
 
