@@ -22,7 +22,7 @@ public class Livro {
 	private String nome;
 	private Date dataPublicacao;
 	private String editora;
-	@NotEmpty(message = "O prefácio deve ser preenchido.")
+	@NotEmpty(message = "O campo [prefacio] deve existir no corpo da requisição e ser preenchido.")
 	@Size(max = 255, message = "O resumo deve ter no máximo 255 caracteres.")
 	private String prefacio;
 	@ManyToOne
