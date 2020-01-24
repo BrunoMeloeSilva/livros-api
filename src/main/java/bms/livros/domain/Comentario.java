@@ -10,17 +10,25 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 @Entity
+@JsonInclude(Include.NON_EMPTY)
 public class Comentario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@JsonProperty("descricaoComentario") //Apenas para mostrar que o atributo do JSON não precisa seguir o do objeto
 	private String comentario;
 	private String usuario;
 	private Date dataComentario;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "LIVRO_ID")
+	@JsonIgnore //Para não gerar recursividade infinita
 	private Livro livro;
 	
 	

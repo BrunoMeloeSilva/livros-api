@@ -11,18 +11,24 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 @Entity
+@JsonInclude(Include.NON_EMPTY)
 public class Autor {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	@NotEmpty(message = "O nome do autor não pode ser vazio.")
+	private Long id; 
+	@NotEmpty(message = "O campo [nome] deve existir no corpo da requisição e ser preenchido.")
 	private String nome;
-	@NotNull(message = "A data de nascimento não pode ser nulo.")
+	@NotNull(message = "O campo [dataNascimento] não pode ser nulo.")
 	private Date dataNascimento;
 	private String nacionalidade;
 	@OneToMany(mappedBy = "autor")
+	@JsonIgnore //Para não gerar recursividade infinita
 	private List<Livro> livros;
 	
 	

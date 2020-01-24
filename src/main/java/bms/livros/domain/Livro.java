@@ -13,13 +13,19 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 @Entity
+@JsonInclude(Include.NON_EMPTY)
 public class Livro {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date dataPublicacao;
 	private String editora;
 	@NotEmpty(message = "O campo [prefacio] deve existir no corpo da requisição e ser preenchido.")
