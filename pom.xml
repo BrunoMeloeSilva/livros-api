@@ -60,6 +60,12 @@
 			<groupId>com.fasterxml.jackson.dataformat</groupId>
 			<artifactId>jackson-dataformat-xml</artifactId>
 		</dependency>
+		<!-- Só de inserir esta dependencia, já obriga a implantação de uma segurança para o ws inteiro -->
+		<!-- Para qualquer API requisitada do WS, solicitara a "chave de acesso" -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
 		
 	</dependencies>
 
